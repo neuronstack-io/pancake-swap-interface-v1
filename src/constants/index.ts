@@ -1,6 +1,8 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@pancakeswap-libs/sdk'
+// eslint-disable-next-line import/no-unresolved
+import { WETH_LOCAL } from 'utils/wrappedCurrency'
 
-export const ROUTER_ADDRESS = '0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F'
+export const ROUTER_ADDRESS = '0xD99D1c33F9fC3444f8101754aBC46c52416550D1'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -30,7 +32,7 @@ export const ETH = new Token(
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
-  [ChainId.BSCTESTNET]: [WETH[ChainId.BSCTESTNET]],
+  [ChainId.BSCTESTNET]: [WETH_LOCAL[ChainId.BSCTESTNET]],
 }
 
 // used to construct intermediary pairs for trading

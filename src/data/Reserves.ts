@@ -18,7 +18,6 @@ export enum PairState {
 
 export function usePairs(currencies: [Currency | undefined, Currency | undefined][]): [PairState, Pair | null][] {
   const { chainId } = useActiveWeb3React()
-
   const tokens = useMemo(
     () =>
       currencies.map(([currencyA, currencyB]) => [
@@ -32,12 +31,11 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
     () =>
       tokens.map(([tokenA, tokenB]) => {
         return tokenA && tokenB && !tokenA.equals(tokenB) ? Pair.getAddress(tokenA, tokenB) : undefined
+        //return tokenA && tokenB && !tokenA.equals(tokenB) ? "0xf89f0159830643b8475b1b950531a00ab09e4712" : undefined
       }),
     [tokens]
-  )
-
-  const results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves')
-
+  );
+  const results = useMultipleContractSingleData(pairAddresses , PAIR_INTERFACE, 'getReserves')
   return useMemo(() => {
     return results.map((result, i) => {
       const { result: reserves, loading } = result
@@ -56,6 +54,8 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
     })
   }, [results, tokens])
 }
+
+// create pair object manually here. the issue is that liquidity token is not coming correctly for this pair 
 
 export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair | null] {
   return usePairs([[tokenA, tokenB]])[0]

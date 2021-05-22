@@ -2,7 +2,11 @@
   "compilerOptions": {
     "baseUrl": "src",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,12 +22,20 @@
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["react-spring", "jest"]
+    "types": [
+      "react-spring",
+      "jest"
+    ],
+    "isolatedModules": true
   },
-  "exclude": ["node_modules", "cypress"],
-  "include": ["src"]
+  "exclude": [
+    "node_modules",
+    "cypress"
+  ],
+  "include": [
+    "src"
+  ]
 }
